@@ -1,10 +1,9 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, MinLength, MaxLength, IsEmail, IsString } from 'class-validator';
-import {  ApiProperty } from '@nestjs/swagger';
 
-export class LoginUserDto {
-
+export class ResetPasswordDto {
     @ApiProperty({
-      example: 'email@email.com',
+      example: 'pejman@gmail.com',
       description: 'The email of the User',
       format: 'email',
       uniqueItems: true,
@@ -19,7 +18,7 @@ export class LoginUserDto {
     readonly email: string;
 
     @ApiProperty({
-      example: 'changeme',
+      example: 'secret password change me!',
       description: 'The password of the User',
       format: 'string',
       minLength: 5,

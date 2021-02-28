@@ -11,23 +11,10 @@ import { ApiBearerAuth, ApiHeader, ApiOkResponse, ApiOperation } from '@nestjs/s
 export class AppController {
   constructor(private authService: AuthService) { }
 
-  // @UseGuards(LocalAuthGuard)
-  // @Post('auth/login')
-  // @HttpCode(HttpStatus.OK)
-  // // @ApiOperation()
-  // @ApiOkResponse({})
-  // async login(@Request() req:any) {
-
-  //   return this.authService.login(req.user);
-  // }
-
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
-  async login(@Request() req, @Body() loginDto:LoginUserDto) {
-    // return req.user;
-    
-    return this.authService.login(req.user._doc);
-
+  async login(@Body() loginDto:LoginUserDto) {
+    return this.authService.login(loginDto);
   }
 
 
@@ -40,8 +27,10 @@ export class AppController {
   //     description: 'the token we need for auth.'
   // })
   getProfile(@Request() req) {
-    
+
     return req.user;
   }
 }
+
+
 
